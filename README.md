@@ -1,2 +1,2 @@
 # akandir
-AK9099080 and ItzhakRiley Collab project
+AK9099080 and Itzhakriley-blip Collab project
