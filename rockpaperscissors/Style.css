@@ -1,5 +1,5 @@
 #Rock.Choice {
-  background-image: url(rock.png);
+  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/rockpaperscissors/rock.png?raw=true);
   background-size: 200px 200px;
   background-color: red;
   color: green;
@@ -87,3 +87,4 @@ body {
     background-size: cover;
   }
 }
+
