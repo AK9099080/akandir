@@ -1,41 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Rock, Paper, Scissors!</title>
-  <link href="Style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AK and IR's Projects</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      width: 80%;
+      max-width: 1000px;
+      margin-top: 20px;
+    }
+
+    .button-container a {
+      text-decoration: none;
+      background-color: #0073e6;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .button-container a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .button-container a i {
+      font-size: 1.5rem;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="Container">
-
-  <button class="Choice" id="Rock" onclick="
-    userChoiceNumber = 1;
-    userChoice = 'Rock';
-    determineWinner();
-    alert(`You Threw: ${userChoice}; The Computer Threw: ${computerChoice}; ${result}`);
-    determineWins()
-    updateScore()">
-    Rock</button>
-
-  <button class="Choice" id="Paper" onclick="
-    userChoiceNumber = 2;
-    userChoice = 'Paper';
-    determineWinner();
-    alert(`You Threw: ${userChoice}; The Computer Threw: ${computerChoice}; ${result}`);
-    determineWins()
-    updateScore()">
-    Paper</button>
-
-  <button class="Choice" id="Scissors" onclick="
-    userChoiceNumber = 3;
-    userChoice = 'Scissors';
-    determineWinner();
-    alert(`You Threw: ${userChoice}; The Computer Threw: ${computerChoice}; ${result}`);
-    determineWins()
-    updateScore()">
-    Scissors</button>
-
+  <h1>My GitHub Projects</h1>
+  
+  <div class="button-container">
+    <!-- Add your project links below -->
+    <a href="https://github.io/akandir/rockpaperscissors" target="_blank">
+      <i class="fab fa-github"></i> Rock Paper Scissors by ItzhakRiley-blip
+    </a>
+    <a href="https://github.com/yourusername/project2" target="_blank">
+      <i class="fab fa-github"></i> Project 2
+    </a>
+    <a href="https://github.com/yourusername/project3" target="_blank">
+      <i class="fab fa-github"></i> Project 3
+    </a>
+    <a href="https://github.com/yourusername/project4" target="_blank">
+      <i class="fab fa-github"></i> Project 4
+    </a>
   </div>
-  <p class="js-wins"></p>
-  <script src="Script.js"></script>
+
+  <footer>
+    <p>Check out more on my <a href="https://github.com/yourusername" target="_blank">GitHub Profile</a>.</p>
+  </footer>
 </body>
 </html>
