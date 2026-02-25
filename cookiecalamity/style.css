@@ -81,5 +81,13 @@ body {
   color: rgb(212, 18, 18);
   background-color: aquamarine;
   font-weight: bold;
-
+}
+.twoTimesMultiplier {
+  background-image: url(2x.png);
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  font-size: 20px;
+  color:rgb(17, 180, 209);
+  font-weight: bold;
 }
