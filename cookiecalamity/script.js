@@ -111,24 +111,3 @@ function twoMultiplier() {
   document.querySelector(".buyingError").innerHTML = "You don't have enough clicks!";
   }
 }
-let futureRedCookies = 0;
-let cookieString = `You can afford ${futureCookies} cookies.`;
-let superCookieString = `You can afford ${futureSuperCookies} cookies.`;
-let redCookieString = `You can afford ${futureRedCookies} cookies.`;
-
-function determineFutureCookies() {
-  futureCookies = Math.floor((counter.clicks) / 50);
-  cookieString = `You can afford ${futureCookies} cookie(s).`
-  document.querySelector(".futureDisplay").innerHTML = cookieString;
-}
-function determineFutureSuperCookies() {
-  futureSuperCookies = Math.floor((counter.clicks) / 1000);
-  superCookieString = `You can afford ${futureSuperCookies} super cookie(s).`
-  document.querySelector(".futureDisplay").innerHTML = superCookieString;
-}
-function determineFutureRedCookies() {
-  futureRedCookies = Math.floor((counter.clicks) / 25000);
-  redCookieString = `You can afford ${futureRedCookies} red cookie(s).`
-  document.querySelector(".futureDisplay").innerHTML = redCookieString;
-
-}
