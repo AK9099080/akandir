@@ -1,0 +1,84 @@
+body {
+  background-color: navy;
+}
+.cookie {
+  background-image: url(cookie.png);
+  width: 100px;
+  height: 100px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(124, 70, 7);
+}
+.superCookie {
+  background-image: url(goldenCookie.png);
+  width: 100px;
+  height: 100px;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(160, 112, 8);
+}
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.counter {
+  display: flex;
+  flex-direction: column;
+  color: orangered;
+}
+.buyingError {
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}
+.button {
+  background-image: url(hello.png);
+  height: 100px;
+  width: 330px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.cookieAmount {
+  color: yellow;
+}
+.superCookieAmount {
+  color:rgb(214, 134, 13)
+}
+.redCookieAmount {
+  color: rgb(207, 4, 4);
+}
+.W-I-P {
+  color: red;
+}
+.redCookie {
+  background-image: url(RED_COOKIE.png);
+  color:rgb(226, 71, 10);
+  width: 100px;
+  height: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  background-size: contain;
+}
+.Affordables {
+  display: flex;
+  flex-direction: column;
+  color: rgb(124, 70, 7);
+  background-color: aquamarine;
+  font-weight: bold;
+}
+.cookieFuture {
+  color: rgb(124, 70, 7);
+  background-color: aquamarine;
+  font-weight: bold;
+}
+.superFuture {
+  color: rgb(228, 147, 26);
+  background-color: aquamarine;
+  font-weight: bold;
+}
+.redFuture {
+  color: rgb(212, 18, 18);
+  background-color: aquamarine;
+  font-weight: bold;
+}

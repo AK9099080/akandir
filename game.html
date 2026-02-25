@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Calamity</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="W-I-P">This Game is a Work In Progress and is Only in Beta Testing.</h1>
+  <p class="counter">Hello!</p>
+  <p class="cookieAmount">You have 1 cookie.</p>
+  <p class="superCookieAmount">You have 0 super cookies.</p>
+  <p class="redCookieAmount">You have 0 red cookies.</p>
+  <p class="futureDisplay"></p>
+  <p class="buyingError"></p>
+  <div class="Affordables">
+  <button class="cookieFuture" onclick="determineFutureCookies()">Affordable Amount of Cookies</button>
+  <button class="superFuture" onclick="determineFutureSuperCookies()">Affordable Amount of Super Cookies</button>
+  <button class="redFuture" onclick="determineFutureRedCookies()">Affordable Amount of Red Cookies</button>
+  </div>
+  <div class="element">
+  <button onclick="determineClicks(); countClicks(); displayClicks();" class="button"></button>
+  <button class="cookie" onclick="buyCookie();" title="+1">Cookie: 50 Clicks</button>
+  <button class="superCookie" onclick="buySuperCookie();" title="+10">Super Cookie: 1000 Clicks</button>
+  <button class="redCookie" onclick="buyRedCookie();" title="+50">Red Cookie: 25000 Clicks</button>
+  <!--<button onclick="shh()" title="shhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh">shh</button>-->
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
