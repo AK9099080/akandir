@@ -20,9 +20,10 @@
   </div>
   <div class="element">
   <button onclick="determineClicks(); countClicks(); displayClicks();" class="button"></button>
-  <button class="cookie" onclick="buyCookie();" title="+1">Cookie: 50 Clicks</button>
-  <button class="superCookie" onclick="buySuperCookie();" title="+10">Super Cookie: 1000 Clicks</button>
-  <button class="redCookie" onclick="buyRedCookie();" title="+50">Red Cookie: 25000 Clicks</button>
+  <button class="cookie" onclick="buyCookie(); disableCookie()" title="+1">Cookie: 50 Clicks</button>
+  <button class="superCookie" onclick="buySuperCookie(); disableSuperCookie();" title="+10">Super Cookie: 1000 Clicks</button>
+  <button class="redCookie" onclick="buyRedCookie(); disableRedCookie()" title="+50">Red Cookie: 25000 Clicks</button>
+  <button class="twoTimesMultiplier" onclick="twoMultiplier()" title="2x">Multiplier: 100000 Clicks</button>
   <!--<button onclick="shh()" title="shhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh">shh</button>-->
   </div>
   <script src="script.js"></script>
