@@ -2,7 +2,7 @@ body {
   background-color: navy;
 }
 .cookie {
-  background-image: url(cookie.png);
+  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/cookiecalamity/cookie.png?raw=true);
   width: 100px;
   height: 100px;
   font-weight: bold;
@@ -10,7 +10,7 @@ body {
   color: rgb(124, 70, 7);
 }
 .superCookie {
-  background-image: url(goldenCookie.png);
+  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/cookiecalamity/goldenCookie.png?raw=true);
   width: 100px;
   height: 100px;
   font-weight: bold;
@@ -33,7 +33,7 @@ body {
   font-weight: bold;
 }
 .button {
-  background-image: url(hello.png);
+  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/cookiecalamity/hello.png?raw=true);
   height: 100px;
   width: 330px;
   background-size: cover;
@@ -52,7 +52,7 @@ body {
   color: red;
 }
 .redCookie {
-  background-image: url(RED_COOKIE.png);
+  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/cookiecalamity/RED_COOKIE.png?raw=true);
   color:rgb(226, 71, 10);
   width: 100px;
   height: 100px;
@@ -81,4 +81,5 @@ body {
   color: rgb(212, 18, 18);
   background-color: aquamarine;
   font-weight: bold;
+
 }
