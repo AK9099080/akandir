@@ -39,16 +39,20 @@ function buyCookie() {
 function disableCookie() {
   if (cookies === 50) {
   document.querySelector(".cookie").disabled = true;
+  document.querySelector(".cookie").innerHTML = "MAX";
   }
 }
 function disableSuperCookie() {
   if (superCookiesAmount === 25) {
   document.querySelector(".superCookie").disabled = true;
+  document.querySelector(".superCookie").innerHTML = "MAX";
+
   }
 }
 function disableRedCookie() {
   if (redCookiesAmount === 10) {
   document.querySelector(".redCookie").disabled = true;
+  document.querySelector(".redCookie").innerHTML = "MAX";
   }
 }
 function buySuperCookie() {
@@ -102,12 +106,13 @@ function determineFutureRedCookies() {
   document.querySelector(".futureDisplay").innerHTML = redCookieString;
 }
 function twoMultiplier() {
-  if (document.querySelector(".twoTimesMultiplier").onclick && counter.clicks >= 100000) {
-    counter.clicks -= 100000;
+  if (document.querySelector(".twoTimesMultiplier").onclick && counter.clicks >= 500000) {
+    counter.clicks -= 500000;
     document.querySelector(".twoTimesMultiplier").disabled = true;
     multiplier += 1;
   }
-  else if (document.querySelector(".twoTimesMultiplier").onclick && counter.clicks < 100000) {
+  else if (document.querySelector(".twoTimesMultiplier").onclick && counter.clicks < 500000) {
   document.querySelector(".buyingError").innerHTML = "You don't have enough clicks!";
   }
 }
+
