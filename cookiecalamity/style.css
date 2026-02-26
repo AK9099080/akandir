@@ -83,7 +83,7 @@ body {
   font-weight: bold;
 }
 .twoTimesMultiplier {
-  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/cookiecalamity/2x.png);
+  background-image: url(https://github.com/AK9099080/akandir/blob/main/assets/cookiecalamity/2x.png?raw=true);
   width: 100px;
   height: 100px;
   background-size: cover;
@@ -91,5 +91,6 @@ body {
   color:rgb(17, 180, 209);
   font-weight: bold;
 }
+
 
 
