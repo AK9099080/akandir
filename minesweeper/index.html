@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Armaan's Minsweeper</title>
+        <style>
+            canvas { background: red; }
+            body { text-align: center; }
+        </style>
+    </head>
+    <body>
+            <h1>Armaan's Minesweeper</h1><br>
+            Select difficulty:
+            <select id="menu" name="menu" onchange="menu()">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="custom">Custom</option>
+            </select><br>
+            <br>
+            Columns: <input id="cols" name="cols" type="text" size="2" disabled>
+            Rows: <input id="rows" name="rows" type="text" size="2" disabled>
+            Mines: <input id="mines" name="mines" type="text" size="2" disabled>
+            <br><br>
+            <p>Left click:<br>
+
+                * Within the grid it reveals a square.<br>
+                * Otherwise starts a new game. <br>
+
+            Right click marks a square within the grid.</p><br>
+            <br>
+            <button onclick="start(document.getElementById('menu'))">Start Game</button>
+    </body>
+    <script src="jsminesweeper.js"></script>
+    <script language="JavaScript">
+	  var gamewindow;
+      function menu() {
+          var elem = document.getElementById('menu');
+          if (elem.options[elem.selectedIndex].value == "custom") {
+              document.getElementById("cols").disabled = false;
+              document.getElementById("rows").disabled = false;
+              document.getElementById("mines").disabled = false;
+          } else {
+              document.getElementById("cols").disabled = true;
+              document.getElementById("rows").disabled = true;
+              document.getElementById("mines").disabled = true;
+          }
+      }
+      function start(elem) {
+          var cols = 0;
+          var rows = 0;
+          var mines = 0;
+          var d = elem.options[elem.selectedIndex].value;
+          switch(d) {
+              case "easy":
+                  cols = rows = 9; mines = 11;
+                  break;
+              case "medium":
+                  cols = rows = 16; mines = 40;
+                  break;
+              case "hard":
+                  cols = 16; rows = 30; mines = 99;
+                  break;
+              default:
+                  cols = document.getElementById("cols").value;
+                  rows = document.getElementById("rows").value;
+                  mines = document.getElementById("mines").value;
+          }
+          width = (30*cols) + 20;
+          height = (30*rows) + 80;
+          windowFeatures = 'toolbar=no, location=no, directories=no, status=no, menubar=no, titlebar=no, scrollbars=no, resizable=no, ';
+          page = "<!DOCTYPE html><html><head><script src='jsminesweeper.js'></sc"+"ript><meta charset='UTF-8' />"
+          + "<meta name='viewport' content='width=device-width' /><title>JSMinesweeper</title><style>body{margin:0;padding:0;overflow-x:hidden;overflow-y:hidden;}canvas{background:grey;}</style></head>"
+          + "<body><canvas id='jsminesweeper' width='"+ width +"' height='"+ height +"' ></canvas></body>"
+		  + "<script>function start() { init(); jsminesweeper("+cols+","+rows+","+mines+"); }; window.onload = start();</sc"+"ript></html>";
+		  if (gamewindow) {
+			  gamewindow.close();
+		  }
+          gamewindow = window.open('', "JSMinesweeper", windowFeatures + "width="+(width)+", height="+(height));
+		  gamewindow.document.write(page);
+		  gamewindow.document.close();
+          gamewindow.focus();
+      }
+    </script>
+</html>
