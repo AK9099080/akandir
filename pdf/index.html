@@ -4,76 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate Generator</title>
-    <!-- Include jsPDF and html2canvas libraries from a CDN -->
+    <!-- Corrected CDNs for html2canvas and jsPDF -->
     <script src="https://cloudflare.com"></script>
     <script src="https://cloudflare.com"></script>
+    
     <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; background: #f4f4f4; }
+        
         .certificate-container { 
             width: 800px; 
             height: 600px; 
-            border: 2px solid black; 
+            border: 10px double #2c3e50; 
             text-align: center; 
             padding: 50px; 
             box-sizing: border-box; 
-            background-image: url('https://placeholder.com'); /* Placeholder image, replace with your actual certificate background image */
-            background-size: cover;
+            background: white;
             position: relative;
             margin-top: 20px;
+            /* Initially hidden until name is provided */
+            display: none; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
+
         #userName { 
             position: absolute; 
-            top: 50%; /* Adjust position as needed for your template */
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 40px; 
+            font-size: 50px; 
+            font-family: 'Georgia', serif;
             font-weight: bold; 
-            color: darkblue;
+            color: #1a2a6c;
         }
-        .controls { margin-top: 20px; }
-        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+
+        .controls { margin-bottom: 20px; }
+        button { padding: 12px 24px; font-size: 16px; cursor: pointer; border-radius: 5px; border: none; transition: 0.3s; }
+        
+        #start-btn { background-color: #3498db; color: white; }
+        #download-btn { background-color: #27ae60; color: white; display: none; } /* Hidden initially */
+        button:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
+
     <h1>Certificate Generator</h1>
+    
     <div class="controls">
-        <button onclick="generateCertificateAndDownload()">Generate and Download Certificate</button>
+        <!-- Step 1 Button -->
+        <button id="start-btn" onclick="askForName()">Create Certificate</button>
+        <!-- Step 2 Button (Appears after name is entered) -->
+        <button id="download-btn" onclick="downloadPDF()">Download PDF</button>
     </div>
     
     <div id="certificate" class="certificate-container">
-        <!-- This is where the name will be inserted -->
+        <h2 style="font-size: 40px; color: #2c3e50;">Certificate of Excellence</h2>
+        <p style="font-size: 20px;">This award is presented to</p>
         <div id="userName"></div>
+        <p style="position: absolute; bottom: 80px; width: 100%; left: 0;">For outstanding performance and dedication.</p>
     </div>
 
     <script>
-        // Ensure jsPDF is available globally if using the UMD version
-        window.jsPDF = window.jspdf.jsPDF;
+        let globalName = "";
 
-        function generateCertificateAndDownload() {
-            // 1. Ask for the user's name using the native JavaScript prompt box
+        function askForName() {
             const name = prompt("Please enter your name:");
 
             if (name && name.trim() !== "") {
-                // 2. Insert the name into the certificate element
+                globalName = name;
+                // Insert name
                 document.getElementById('userName').innerText = name;
-
-                // 3. Convert the HTML certificate to a canvas image and then to a PDF
-                const certificateElement = document.getElementById('certificate');
                 
-                html2canvas(certificateElement, { scale: 2 }).then(canvas => {
-                    const imgData = canvas.toDataURL('image/png');
-                    // Create a new PDF document
-                    const pdf = new window.jsPDF('landscape', 'px', [800, 600]); // Use dimensions matching your certificate container
-                    
-                    // Add the image to the PDF
-                    pdf.addImage(imgData, 'PNG', 0, 0, 800, 600);
-                    
-                    // 4. Download the generated PDF file
-                    pdf.save(`Certificate_for_${name.replace(/\s/g, '_')}.pdf`);
-                });
-            } else {
-                alert("Name cannot be empty. Please try again.");
+                // Show the certificate and the download button
+                document.getElementById('certificate').style.display = "block";
+                document.getElementById('download-btn').style.display = "inline-block";
+                
+                // Hide the initial start button
+                document.getElementById('start-btn').style.display = "none";
+            } else if (name !== null) {
+                alert("Name cannot be empty.");
             }
+        }
+
+        async function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const certificateElement = document.getElementById('certificate');
+            const downloadBtn = document.getElementById('download-btn');
+
+            downloadBtn.innerText = "Generating...";
+            downloadBtn.disabled = true;
+
+            // Capture the div as a canvas
+            const canvas = await html2canvas(certificateElement, { scale: 2 });
+            const imgData = canvas.toDataURL('image/png');
+            
+            // Create PDF (Landscape, pixels, matching container size)
+            const pdf = new jsPDF('l', 'px', [800, 600]);
+            pdf.addImage(imgData, 'PNG', 0, 0, 800, 600);
+            
+            // Save file
+            pdf.save(`Certificate_${globalName.replace(/\s/g, '_')}.pdf`);
+            
+            downloadBtn.innerText = "Download PDF";
+            downloadBtn.disabled = false;
         }
     </script>
 </body>
