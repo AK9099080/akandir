@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <!-- Include jsPDF and html2canvas libraries from a CDN -->
+    <script src="https://cloudflare.com"></script>
+    <script src="https://cloudflare.com"></script>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .certificate-container { 
+            width: 800px; 
+            height: 600px; 
+            border: 2px solid black; 
+            text-align: center; 
+            padding: 50px; 
+            box-sizing: border-box; 
+            background-image: url('https://placeholder.com'); /* Placeholder image, replace with your actual certificate background image */
+            background-size: cover;
+            position: relative;
+            margin-top: 20px;
+        }
+        #userName { 
+            position: absolute; 
+            top: 50%; /* Adjust position as needed for your template */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px; 
+            font-weight: bold; 
+            color: darkblue;
+        }
+        .controls { margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Certificate Generator</h1>
+    <div class="controls">
+        <button onclick="generateCertificateAndDownload()">Generate and Download Certificate</button>
+    </div>
+    
+    <div id="certificate" class="certificate-container">
+        <!-- This is where the name will be inserted -->
+        <div id="userName"></div>
+    </div>
+
+    <script>
+        // Ensure jsPDF is available globally if using the UMD version
+        window.jsPDF = window.jspdf.jsPDF;
+
+        function generateCertificateAndDownload() {
+            // 1. Ask for the user's name using the native JavaScript prompt box
+            const name = prompt("Please enter your name:");
+
+            if (name && name.trim() !== "") {
+                // 2. Insert the name into the certificate element
+                document.getElementById('userName').innerText = name;
+
+                // 3. Convert the HTML certificate to a canvas image and then to a PDF
+                const certificateElement = document.getElementById('certificate');
+                
+                html2canvas(certificateElement, { scale: 2 }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/png');
+                    // Create a new PDF document
+                    const pdf = new window.jsPDF('landscape', 'px', [800, 600]); // Use dimensions matching your certificate container
+                    
+                    // Add the image to the PDF
+                    pdf.addImage(imgData, 'PNG', 0, 0, 800, 600);
+                    
+                    // 4. Download the generated PDF file
+                    pdf.save(`Certificate_for_${name.replace(/\s/g, '_')}.pdf`);
+                });
+            } else {
+                alert("Name cannot be empty. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
