@@ -1,91 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+ <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://i.ibb.co/hMv55Bm/sss.jpg" src="https://i.ibb.co/hMv55Bm/sss.jpg">
     <title>Certificate Generator</title>
-    <!-- Switching to Unpkg CDNs for better reliability -->
-    <script src="https://unpkg.com"></script>
-    <script src="https://raw.githubusercontent.com/AK9099080/akandir/refs/heads/main/pdf/jspdf.umd.min.js"></script>
-    
-    <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; background: #f9f9f9; }
-        .certificate-container { 
-            width: 800px; height: 600px; border: 12px double #002147; text-align: center; 
-            padding: 40px; box-sizing: border-box; background: white; position: relative;
-            display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        #userName { font-size: 48px; font-weight: bold; color: #002147; margin: 40px 0; border-bottom: 2px solid #ccc; display: inline-block; padding: 0 30px; }
-        .controls { margin-bottom: 20px; }
-        button { padding: 12px 28px; font-size: 16px; cursor: pointer; border-radius: 4px; border: none; color: white; }
-        #start-btn { background: #0056b3; }
-        #download-btn { background: #218838; display: none; }
-    </style>
-</head>
+
 <body>
-
-    <h1>Certificate Generator</h1>
-    
-    <div class="controls">
-        <button id="start-btn" onclick="askName()">1. Enter Name</button>
-        <button id="download-btn" onclick="generateAndSave()">2. Download PDF</button>
+  <center>
+	
+    <div class="container">
+        <h1>Certificate Generator</h1>
+         <br>
+          <br>
+        <label>
+       
+            Name:
+            <input id="name" type='text'>
+        </label>
+  <a href="#https://i.ibb.co/hMv55Bm/sss.jpg" id="download-btn">Download</a>
+  
+        <canvas id="canvas" height="350px" width="500px"></canvas>
     </div>
+  
+  
+  <br>
+  <br>
+
+ 
     
-    <div id="certificate" class="certificate-container">
-        <h2 style="font-size: 40px; margin-top: 20px;">CERTIFICATE OF COMPLETION</h2>
-        <p style="font-size: 18px; color: #555;">This acknowledges that</p>
-        <div id="userName"></div>
-        <p style="font-size: 18px; color: #555;">is a goated person.</p>
-        <div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 10px; width: 200px; margin-left: auto; margin-right: auto;">
-            <p style="font-size: 14px;">Authorized Signature</p>
-            
-        </div>
-    </div>
-
-    <script>
-        let userNameInput = "";
-
-        function askName() {
-            const name = prompt("Please enter the name for the certificate:");
-            if (name && name.trim() !== "") {
-                userNameInput = name;
-                document.getElementById('userName').innerText = name;
-                document.getElementById('certificate').style.display = "block";
-                document.getElementById('start-btn').style.display = "none";
-                document.getElementById('download-btn').style.display = "inline-block";
-            }
-        }
-
-        async function generateAndSave() {
-            const btn = document.getElementById('download-btn');
-            btn.innerText = "Downloading...";
-            btn.disabled = true;
-
-            try {
-                // FAIL-SAFE: Re-check library existence
-                const JsPDFLib = window.jspdf ? window.jspdf.jsPDF : window.jsPDF;
-                
-                if (!JsPDFLib || !window.html2canvas) {
-                    alert("Error: The browser is still blocking the generator libraries. Try refreshing the page or using a different browser (Chrome/Edge recommended).");
-                    return;
-                }
-
-                const element = document.getElementById('certificate');
-                const canvas = await html2canvas(element, { scale: 2 });
-                const imgData = canvas.toDataURL('image/png');
-                
-                const pdf = new JsPDFLib('l', 'px', [800, 600]);
-                pdf.addImage(imgData, 'PNG', 0, 0, 800, 600);
-                pdf.save(`Certificate_${userNameInput.replace(/\s/g, '_')}.pdf`);
-
-            } catch (err) {
-                console.error(err);
-                alert("Download failed. Please check the browser console (F12) for details.");
-            } finally {
-                btn.innerText = "2. Download PDF";
-                btn.disabled = false;
-            }
-        }
-    </script>
+    <h2> There is a problem with the download, is there anyone who can solve it? </h2>
+  </center>
 </body>
-</html>
